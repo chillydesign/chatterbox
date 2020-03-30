@@ -16,7 +16,7 @@ export class ConversationsComponent implements OnInit, OnDestroy {
   public conversations: Conversation[];
   public visible_conversations: Conversation[];
   public offset = 0;
-  public limit = 2;
+  public limit = 20;
   public load_more = false;
   public loading = false;
   public search_term: string;
