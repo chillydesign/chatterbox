@@ -1,0 +1,23 @@
+<div *ngIf="current_user && users">
+
+    <table *ngIf="current_user">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>
+                    <a [routerLink]="['/users', user.id]">{{user.username}}</a></td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at | date:'mediumDate'}} {{user.created_at | date:'shortTime'}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

@@ -23,6 +23,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { FancifyPipe } from './pipes/fancify.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './users/user/user.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { UserComponent } from './users/user/user.component';
     SpinnerComponent,
     FancifyPipe,
     ProfileComponent,
-    UserComponent
+    UserComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
