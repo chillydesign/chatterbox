@@ -35,5 +35,13 @@ export class MessagesService {
   }
 
 
+  deleteMessage(message: Message): Observable<Message> {
+    const options = this.authService.setAPIOptions();
+    const endpoint = `${this.api_url}/?route=messages&id=${message.id}`;
+    return this.http.delete<Message>(endpoint, options).pipe(
+      catchError(this.authService.handleError)
+    );
+  }
+
 
 }

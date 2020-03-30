@@ -22,6 +22,8 @@ export class NewMessageComponent implements OnInit, OnDestroy {
   constructor(private messagesService: MessagesService, private router: Router) { }
 
   ngOnInit() {
+
+
   }
 
 
@@ -48,8 +50,6 @@ export class NewMessageComponent implements OnInit, OnDestroy {
           this.formLoading = false;
           this.formSuccess = true;
           this.errors.next(null);
-
-
           if (!this.conversation.messages) {
             this.conversation.messages = [];
           }

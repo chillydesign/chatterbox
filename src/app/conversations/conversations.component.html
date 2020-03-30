@@ -10,7 +10,7 @@
         <tr *ngFor="let conversation of visible_conversations">
             <td>
                 <a [routerLink]="['/conversations', conversation.id]">{{conversation.title}}</a></td>
-            <td>{{conversation.created_at | date:'mediumDate'}} {{conversation.created_at | date:'shortTime'}}</td>
+            <td>{{conversation.created_at | date:'h:mm MMMM d, y'}}</td>
             <td>{{conversation.user.username}}</td>
         </tr>
     </tbody>

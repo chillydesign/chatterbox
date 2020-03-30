@@ -114,20 +114,17 @@ export class ConversationsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-
     const subs: Subscription[] = [
       this.conversations_sub,
       this.route_params_subscription,
       this.update_conversation_sub,
       this.current_user_subscription,
     ];
-
     subs.forEach((sub) => {
       if (sub) {
         sub.unsubscribe();
       }
     });
-
   }
 
 

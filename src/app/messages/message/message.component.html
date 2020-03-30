@@ -1,5 +1,10 @@
 <div class="message_container">
     <blockquote [innerHTML]="message.content | fancify"></blockquote>
-    <cite class="meta">posted by <a [routerLink]="['/users', message.user.id]"> {{message.user.username}}</a> on
-        {{message.created_at | date}}</cite>
+    <cite class="meta">posted by <a [routerLink]="['/users', message.user.id]"> {{message.user.username}}</a> at
+
+        {{message.created_at | date:'h:mm MMMM d, y'}}
+
+        <span *ngIf="current_user.is_an_admin"> | <a (click)="deleteMessage()"> (delete message)</a> </span>
+
+    </cite>
 </div>

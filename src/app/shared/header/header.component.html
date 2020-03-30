@@ -5,6 +5,9 @@
         <nav>
             <h1> <a [routerLink]="['/']">Chatterbox</a></h1>
             <ul *ngIf="current_user">
+
+                <li *ngIf="current_user.is_an_admin"><a [routerLink]="['/users']"> Users</a></li>
+
                 <li> <a [routerLink]="['/profile']"> {{current_user.username}}</a></li>
                 <li> <a [routerLink]="['/conversations', 'new']"> New thread</a></li>
                 <li><a class="logout" (click)="logout()" href="#">Log out</a></li>

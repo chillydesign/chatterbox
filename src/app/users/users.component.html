@@ -6,14 +6,19 @@
                 <th>Username</th>
                 <th>Email</th>
                 <th>Created</th>
+
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let user of users">
                 <td>
-                    <a [routerLink]="['/users', user.id]">{{user.username}}</a></td>
+                    <a [routerLink]="['/users', user.id]">
+                        {{user.username}}
+                        <span *ngIf="user.is_an_admin"> (ADMIN)</span>
+                    </a></td>
                 <td>{{user.email}}</td>
-                <td>{{user.created_at | date:'mediumDate'}} {{user.created_at | date:'shortTime'}}</td>
+                <td>{{user.created_at | date:'MMMM d, y'}}</td>
+
 
             </tr>
         </tbody>
