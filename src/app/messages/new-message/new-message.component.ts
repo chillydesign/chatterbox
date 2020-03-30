@@ -12,11 +12,10 @@ import { Conversation } from 'src/app/models/conversation.model';
 })
 export class NewMessageComponent implements OnInit, OnDestroy {
   @Input() conversation: Conversation;
-
+  public message = new Message();
   public canSubmitForm = false;
   public formLoading = false;
   public formSuccess = false;
-  public message = new Message();
   public errors: Subject<object> = new Subject();
   private add_message_sub: Subscription;
 
