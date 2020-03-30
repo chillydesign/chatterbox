@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { Message } from 'src/app/models/message.model';
 
 @Component({
   selector: 'app-message',
@@ -11,6 +11,7 @@ export class MessageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
