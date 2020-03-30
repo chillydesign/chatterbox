@@ -1,0 +1,19 @@
+@import '../../../styles/variables';
+
+
+.message_container {
+    padding: 0 $padding $padding;
+    margin: 0 0 $padding;
+    border-bottom: 1px solid $light_grey;
+}
+
+blockquote {
+    font-size: $font_size;
+    margin: 0 0 10px;
+    line-height: 160%;
+}
+
+cite {
+    font-size: $font_size;
+    ;
+}

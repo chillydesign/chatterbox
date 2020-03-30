@@ -1,0 +1,5 @@
+<div class="message_container">
+    <blockquote [innerHTML]="message.content | fancify"></blockquote>
+    <cite class="meta">posted by <a [routerLink]="['/users', message.user.id]"> {{message.user.username}}</a> on
+        {{message.created_at | date}}</cite>
+</div>

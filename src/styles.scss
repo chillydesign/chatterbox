@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import 'styles/variables';
+@import 'styles/reset';
+@import 'styles/typography';
+
+
+body {
+    background: $background_color;
+    color: $font_color;
+    font-family: $font_stack;
+    font-weight: normal;
+    font-size: 62.5%;
+}
+
+
+
+.container {
+
+    margin: auto;
+    padding: 0 $padding;
+
+    @media(min-width: 980px) {
+        width: 960px;
+    }
+
+    @media(min-width: 1200px) {
+        width: 1180px;
+    }
+
+
+}
+
+.meta {
+    color: $medium_grey;
+    font-style: italic;
+}
+
+
+
+$spinner_height: 35px;
+
+.spinner {
+    border-radius: 50%;
+    width: $spinner_height;
+    height: $spinner_height;
+    margin: 60px auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border: #{$spinner_height / 10} solid transparentize($brand_color, 0.5);
+    border-left: #{$spinner_height / 10} solid $brand_color;
+    transform: translateZ(0);
+    animation: load8 1.1s infinite linear;
+}
+
+
+@keyframes load8 {
+    0% {
+        transform: rotate(0deg);
+
+    }
+
+
+    100% {
+        transform: rotate(360deg);
+
+    }
+}

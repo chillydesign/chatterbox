@@ -1,0 +1,36 @@
+$brand_color: #3369ff;
+
+$brand_color_adjust: adjust-hue($brand_color, -17);
+
+$light_grey: #eee;
+$medium_grey: #999;
+$dark_grey: #555;
+$font_color: #222;
+
+$red: #ca385e;
+$green: #38ca5e;
+
+
+$background_color: #fff;
+
+$font_stack: 'Work Sans',
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Helvetica,
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol";
+
+$font_size: 1.85em;
+$line_height: 145%;
+
+
+$padding: 25px;
+
+$border_radius: 4px;
+
+$mobile_width: 768px;

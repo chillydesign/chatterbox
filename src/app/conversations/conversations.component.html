@@ -1,1 +1,26 @@
-<p>conversations works!</p>
+<table *ngIf="current_user">
+    <thead>
+        <tr>
+            <th>Thread</th>
+            <th>Posted:</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let conversation of visible_conversations">
+            <td>
+                <a [routerLink]="['/conversations', conversation.id]">{{conversation.title}}</a></td>
+            <td>{{conversation.created_at | date:'mediumDate'}} {{conversation.created_at | date:'shortTime'}}</td>
+            <td>{{conversation.user.username}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<p *ngIf="load_more">
+    <a (click)="loadMore()" class="button button_block">Load more conversations</a>
+</p>
+
+<app-spinner [show]="loading"></app-spinner>

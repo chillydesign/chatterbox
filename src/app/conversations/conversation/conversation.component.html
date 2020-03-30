@@ -1,0 +1,12 @@
+<div *ngIf="conversation">
+
+
+    <h1>{{conversation.title}}</h1>
+    <p class="meta">{{conversation.created_at | date}} by {{conversation.user.username}}</p>
+
+    <app-message *ngFor="let message of conversation.messages" [message]="message"></app-message>
+
+
+    <app-new-message [conversation]="conversation"></app-new-message>
+
+</div>

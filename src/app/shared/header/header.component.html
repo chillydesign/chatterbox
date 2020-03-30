@@ -1,0 +1,23 @@
+<header>
+
+
+    <div class="container">
+        <nav>
+            <h1> <a [routerLink]="['/']">Chatterbox</a></h1>
+            <ul *ngIf="current_user">
+                <li> <a [routerLink]="['/profile']"> {{current_user.username}}</a></li>
+                <li> <a [routerLink]="['/conversations', 'new']"> New thread</a></li>
+                <li><a class="logout" (click)="logout()" href="#">Log out</a></li>
+
+
+            </ul>
+            <ul *ngIf="!current_user">
+
+                <li> <a [routerLink]="['/login']"> Log in</a></li>
+                <li> <a [routerLink]="['/register']"> Register</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+</header>
