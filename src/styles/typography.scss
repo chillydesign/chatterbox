@@ -201,6 +201,7 @@ form {
 label {
     font-size: $font_size;
     display: block;
+    padding: 0 0 4px;
 }
 
 
@@ -212,10 +213,11 @@ button {
     width: 100%;
     padding: 10px;
     font-size: $font_size;
-    border: 1px solid $medium_grey;
+    border: 1px solid $light_grey;
     font-family: $font_stack;
     border-radius: $border_radius;
     line-height: 1.2;
+    background-color: $very_light_grey;
 
     &:focus {
         border-color: $brand_color;

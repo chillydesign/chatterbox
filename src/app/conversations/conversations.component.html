@@ -15,10 +15,10 @@
                     <h4>{{conversation.title}}</h4>
 
                     <span class="meta"> {{conversation.user.username}} on
-                        {{conversation.created_at | date:' MMMM d'}}</span>
+                        {{conversation.created_at | date:'MMMM d'}}</span>
                 </a>
             </td>
-            <td>{{conversation.updated_at | date:'h:mm MMMM d, y'}}</td>
+            <td>{{conversation.updated_at | date:'h:mm, MMMM d'}}</td>
 
             <td>{{conversation.messages_count}}</td>
         </tr>

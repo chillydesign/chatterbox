@@ -3,7 +3,8 @@ $brand_color: #3369ff;
 $brand_color_adjust: adjust-hue($brand_color, -17);
 $brand_color_dark: scale-color($brand_color, $lightness: -20%, $saturation: -50%);
 
-$light_grey: #efefef;
+$very_light_grey: #f7f7f7;
+$light_grey: #ddd;
 $medium_grey: #999;
 $dark_grey: #444;
 $font_color: #111;
