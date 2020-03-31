@@ -15,14 +15,13 @@ th {
 
 
 
-
 table {
     width: 100%;
     margin: 0 0 $padding;
 
 
     th {
-        background-color: $dark_grey;
+        background-color: $brand_color_dark;
         color: white;
     }
 
@@ -36,6 +35,10 @@ table {
         &:nth-child(2n) {
             background-color: $light_grey;
         }
+    }
+
+    h4 {
+        font-size: 1.2em;
     }
 }
 
@@ -59,7 +62,7 @@ a {
 
 
     &:hover {
-        color: $brand_color_adjust;
+        color: $brand_color_dark;
     }
 
     &.button {

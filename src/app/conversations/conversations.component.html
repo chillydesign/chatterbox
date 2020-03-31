@@ -12,8 +12,8 @@
         <tr *ngFor="let conversation of conversations">
             <td>
                 <a [routerLink]="['/conversations', conversation.id]">
-                    {{conversation.title}}
-                    <br>
+                    <h4>{{conversation.title}}</h4>
+
                     <span class="meta"> {{conversation.user.username}} on
                         {{conversation.created_at | date:' MMMM d'}}</span>
                 </a>

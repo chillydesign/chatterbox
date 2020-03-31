@@ -1,16 +1,15 @@
 <div *ngIf="conversation">
 
-    <div class="columns">
-        <div class="column">
-            <h1>{{conversation.title}}</h1>
-        </div>
-        <div class="column column_right" *ngIf="current_user.is_an_admin">
-            <p> <a (click)="deleteConversation()">(delete conversation)</a></p>
-        </div>
-    </div>
 
 
-    <p class="meta">{{conversation.created_at | date}} by {{conversation.user.username}}</p>
+    <h1>{{conversation.title}}</h1>
+
+
+    <p class="meta">
+        {{conversation.created_at | date}} by {{conversation.user.username}}
+
+        <span *ngIf="current_user.is_an_admin"> <a (click)=" deleteConversation()">(delete conversation)</a></span>
+    </p>
 
     <app-message *ngFor="let message of conversation.messages" (messageDeleted)="removeMessage($event)"
         [message]="message" [current_user]="current_user">
