@@ -34,8 +34,14 @@
         </div>
     </div>
     <ul>
+
         <app-form-field [errors]="errors">
+
             <button [disabled]="formLoading">Post</button>
+            <app-spinner [inline]="true" [show]="formLoading"></app-spinner>
+
         </app-form-field>
+
+
     </ul>
 </form>

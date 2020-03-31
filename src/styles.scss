@@ -113,6 +113,12 @@ $spinner_height: 35px;
     border-left: #{$spinner_height / 10} solid $brand_color;
     transform: translateZ(0);
     animation: load8 1.1s infinite linear;
+
+    &.inline {
+        display: inline-block;
+        margin: 0 7px;
+        top: 9px;
+    }
 }
 
 
