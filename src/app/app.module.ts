@@ -25,6 +25,7 @@ import { FancifyPipe } from './pipes/fancify.pipe';
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './users/user/user.component';
 import { UsersComponent } from './users/users.component';
+import { UnauthorizedComponent } from './status-codes/unauthorized/unauthorized.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { UsersComponent } from './users/users.component';
     FancifyPipe,
     ProfileComponent,
     UserComponent,
-    UsersComponent
+    UsersComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,

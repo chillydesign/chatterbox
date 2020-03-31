@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,11 +15,31 @@ export class SignInComponent implements OnInit, OnDestroy {
   public email: string;
   public password: string;
   public errors: Subject<object> = new Subject();
+  private current_user_subscription: Subscription;
   constructor(private authService: AuthService, private router: Router) { }
 
+
   ngOnInit() {
+    this.getCurrentUser();
   }
 
+  getCurrentUser(): void {
+    this.current_user_subscription = this.authService.current_user.subscribe(
+      (user: User) => {
+
+        if (user) {
+          if (user.is_approved) {
+            this.router.navigate(['/']);
+          } else {
+            this.router.navigate(['/unauthorized']);
+          }
+        }
+
+
+
+      }
+    );
+  }
 
 
 
@@ -28,7 +49,7 @@ export class SignInComponent implements OnInit, OnDestroy {
       this.login_sub = this.authService.login(this.email, this.password).subscribe(
         () => {
           this.errors.next(null);
-          this.router.navigate(['/']);
+
 
         },
         () => this.errors.next({ signin: 'Connection error' })
@@ -41,6 +62,9 @@ export class SignInComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.login_sub) {
       this.login_sub.unsubscribe();
+    }
+    if (this.current_user_subscription) {
+      this.current_user_subscription.unsubscribe();
     }
   }
 

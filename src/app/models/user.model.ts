@@ -7,6 +7,7 @@ export class User {
     public current_password: string;
     public id: number;
     public is_an_admin: boolean;
+    public is_approved: boolean;
 
     constructor(obj?: any) {
 

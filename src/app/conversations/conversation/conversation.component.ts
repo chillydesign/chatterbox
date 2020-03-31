@@ -44,9 +44,9 @@ export class ConversationComponent implements OnInit, OnDestroy {
       (user: User) => {
         // set user to nil if necessary
         this.current_user = user;
-        console.log(this.current_user);
 
-        if (this.current_user) {
+
+        if (this.current_user && this.current_user.is_approved) {
           this.route_params_subscription = this.route.params.subscribe(
             (params: Params) => {
               this.getConversation(params.id);

@@ -4,6 +4,8 @@ import { Message } from 'src/app/models/message.model';
 import { Router } from '@angular/router';
 import { Conversation } from 'src/app/models/conversation.model';
 import { ConversationsService } from 'src/app/services/conversations.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-new-conversation',
@@ -11,18 +13,32 @@ import { ConversationsService } from 'src/app/services/conversations.service';
   styleUrls: ['./new-conversation.component.scss']
 })
 export class NewConversationComponent implements OnInit, OnDestroy {
-  public conversation = new Conversation();
+  public conversation;
   public canSubmitForm = false;
   public formLoading = false;
   public formSuccess = false;
   public errors: Subject<object> = new Subject();
   private add_conver_sub: Subscription;
+  private current_user_subscription: Subscription;
 
-  constructor(private conversationsService: ConversationsService, private router: Router) { }
+  constructor(private conversationsService: ConversationsService, private authService: AuthService, private router: Router) { }
+
 
   ngOnInit() {
+    this.getCurrentUser();
   }
 
+  getCurrentUser(): void {
+    this.current_user_subscription = this.authService.current_user.subscribe(
+      (user: User) => {
+        if (user) {
+          if (user.is_approved) {
+            this.conversation = new Conversation();
+          }
+        }
+      }
+    );
+  }
 
 
   onFormChange(): void {
@@ -61,6 +77,7 @@ export class NewConversationComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     const subs: Subscription[] = [
       this.add_conver_sub,
+      this.current_user_subscription,
 
     ];
 

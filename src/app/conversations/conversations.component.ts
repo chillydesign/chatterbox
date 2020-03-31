@@ -44,7 +44,7 @@ export class ConversationsComponent implements OnInit, OnDestroy {
         // set user to nil if necessary
         this.current_user = user;
 
-        if (this.current_user) {
+        if (this.current_user && this.current_user.is_approved) {
           this.subscribeToRoute();
         }
 

@@ -10,6 +10,7 @@ import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserComponent } from './users/user/user.component';
 import { UsersComponent } from './users/users.component';
+import { UnauthorizedComponent } from './status-codes/unauthorized/unauthorized.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'users/:id', component: UserComponent },
   { path: 'users', component: UsersComponent },
 
-  { path: '401', component: NotFoundComponent, data: { title: 'Page not found' } },
+  { path: 'unauthorized', component: UnauthorizedComponent, data: { title: 'Unauthorized' } },
+  { path: '401', component: UnauthorizedComponent, data: { title: 'Unauthorized' } },
   { path: '404', component: NotFoundComponent, data: { title: 'Page not found' } },
   { path: '**', component: NotFoundComponent, data: { title: 'Page not found' } },
 
