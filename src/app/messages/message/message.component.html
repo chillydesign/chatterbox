@@ -1,4 +1,11 @@
 <div class="message_container">
+
+    <div class="image_container" *ngIf="message && message.file_url">
+        <a [href]="message.file_url" target="_blank">
+            <img [src]="message.file_url" alt="" />
+        </a>
+    </div>
+
     <blockquote [innerHTML]="message.content | fancify"></blockquote>
     <cite class="meta"><a [routerLink]="['/users', message.user.id]"> {{message.user.username}}</a> at
 

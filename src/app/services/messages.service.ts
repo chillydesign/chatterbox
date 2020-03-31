@@ -24,6 +24,7 @@ export class MessagesService {
         content: message.content,
         conversation_id: message.conversation_id,
         user_id: message.user_id,
+        file: message.file,
       }
 
     };

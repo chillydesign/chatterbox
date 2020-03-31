@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,6 +54,7 @@ import { UsersComponent } from './users/users.component';
     HttpClientModule,
     FormsModule,
     CommonModule,
+    NgxDropzoneModule,
     AppRoutingModule
   ],
   providers: [],

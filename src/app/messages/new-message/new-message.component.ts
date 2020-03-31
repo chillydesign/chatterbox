@@ -18,6 +18,8 @@ export class NewMessageComponent implements OnInit, OnDestroy {
   public formSuccess = false;
   public errors: Subject<object> = new Subject();
   private add_message_sub: Subscription;
+  public file: File;
+  public maxFileSize: number = 1024 * 1024 * 1; // 1 mb
 
   constructor(private messagesService: MessagesService, private router: Router) { }
 
@@ -65,6 +67,65 @@ export class NewMessageComponent implements OnInit, OnDestroy {
       );
     }
   }
+
+
+
+
+
+  onSelect(event) {
+
+
+    if (event.rejectedFiles.length > 0) {
+      if (event.rejectedFiles[0].reason === 'size') {
+        alert('This file is too big.')
+      }
+    }
+
+
+    if (event.addedFiles.length > 0) {
+      this.file = event.addedFiles[0];
+      this.readFile(this.file).then(fileContents => {
+        this.message.file = fileContents.toString();
+
+      }).catch((err) => {
+        console.log(err);
+      });
+
+    }
+  }
+
+
+
+
+
+  onRemove(event: File) {
+    this.file = null;
+  }
+
+
+
+  private async readFile(file: File): Promise<string | ArrayBuffer> {
+    return new Promise<string | ArrayBuffer>((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = e => {
+        return resolve((e.target as FileReader).result);
+      };
+
+      reader.onerror = e => {
+        console.error(`FileReader failed on file ${file.name}.`);
+        return reject(null);
+      };
+
+      if (!file) {
+        console.error('No file to read.');
+        return reject(null);
+      }
+
+      reader.readAsDataURL(file);
+    });
+  }
+
 
 
   ngOnDestroy() {

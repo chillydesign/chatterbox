@@ -1,4 +1,5 @@
 import { User } from './user.model';
+import { environment } from 'src/environments/environment';
 
 export class Message {
 
@@ -10,6 +11,8 @@ export class Message {
     public user: User;
     public created_at: string;
     public conversation_id: number;
+    public file: string;
+    public file_url: string;
 
 
     constructor(obj?: any) {
@@ -20,6 +23,10 @@ export class Message {
 
             if (obj.user) {
                 this.user = new User(obj.user);
+            }
+
+            if (obj.file) {
+                this.file_url = environment.api_url + this.file_url;
             }
         }
 

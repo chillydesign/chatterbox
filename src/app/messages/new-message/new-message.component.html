@@ -1,13 +1,39 @@
 <form (keyup)="onFormChange()" (change)="onFormChange()" (ngSubmit)="onSubmit()" novalidate>
+
+
+    <div class="columns">
+        <div class="column">
+            <ul>
+
+                <app-form-field [errors]="errors" [field]="'content'">
+                    <label for="content">Your message * </label>
+                    <textarea autocomplete="off" type="text" name="content" id="content"
+                        [(ngModel)]="message.content"></textarea>
+                </app-form-field>
+
+            </ul>
+        </div>
+        <div class="column column_small">
+
+            <ul>
+
+                <app-form-field>
+                    <label for="file">Upload a picture (max 1mb)</label>
+                    <ngx-dropzone [accept]="'image/*'" [multiple]="false" [maxFileSize]="maxFileSize"
+                        (change)="onSelect($event)">
+                        <ngx-dropzone-label>Drag file here or click here to upload </ngx-dropzone-label>
+                        <ngx-dropzone-preview *ngIf="file" [removable]="true" (removed)="onRemove(file)">
+                            <ngx-dropzone-label>{{ file.name }} ({{ file.type }}) <br> Loading ... </ngx-dropzone-label>
+                        </ngx-dropzone-preview>
+                    </ngx-dropzone>
+
+                </app-form-field>
+
+            </ul>
+
+        </div>
+    </div>
     <ul>
-
-        <app-form-field [errors]="errors" [field]="'content'">
-            <label for="content">Your message * </label>
-            <textarea autocomplete="off" type="text" name="content" id="content"
-                [(ngModel)]="message.content"></textarea>
-        </app-form-field>
-
-
         <app-form-field [errors]="errors">
             <button [disabled]="formLoading">Post</button>
         </app-form-field>
