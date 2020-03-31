@@ -14,6 +14,7 @@ import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   { path: '', component: ConversationsComponent },
+  { path: 'page/:page', component: ConversationsComponent },
   { path: 'conversations/new', component: NewConversationComponent, data: { title: 'New Conversation' } },
   { path: 'conversations/:id/edit', component: EditConversationComponent, data: { title: 'Edit Conversation' } },
   { path: 'conversations/:id', component: ConversationComponent },

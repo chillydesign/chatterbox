@@ -15,8 +15,9 @@ export class ConversationsComponent implements OnInit, OnDestroy {
   public current_user: User;
   public conversations: Conversation[];
   public visible_conversations: Conversation[];
-  public offset = 0;
   public limit = 20;
+  public page_urls: { path: string[], page: number }[];
+  public current_page = 1;
   public load_more = false;
   public loading = false;
   public search_term: string;
@@ -44,8 +45,7 @@ export class ConversationsComponent implements OnInit, OnDestroy {
         this.current_user = user;
 
         if (this.current_user) {
-
-          this.refreshConversations();
+          this.subscribeToRoute();
         }
 
       }
@@ -53,12 +53,18 @@ export class ConversationsComponent implements OnInit, OnDestroy {
   }
 
 
-  refreshConversations(): void {
-    this.conversations = [];
-    this.visible_conversations = null;
-    this.load_more = false;
-    this.offset = 0;
-    this.getConversations();
+  subscribeToRoute(): void {
+    this.route_params_subscription = this.route.params.subscribe(
+      (params: Params) => {
+
+        if (params.page) {
+          this.current_page = parseInt(params.page, 10);
+        } else {
+          this.current_page = 1;
+        }
+        this.getConversations();
+      }
+    ); // end of route_params_subscription
   }
 
 
@@ -67,51 +73,37 @@ export class ConversationsComponent implements OnInit, OnDestroy {
 
     if (this.loading === false) {
       this.loading = true;
-      const options = { offset: this.offset, limit: this.limit };
+      const options = { offset: this.limit * (this.current_page - 1), limit: this.limit };
       this.conversations_sub = this.conversationsService.getConversations(options).subscribe(
         (conversations: Conversation[]) => {
           if (conversations) {
-            conversations.forEach(p => this.conversations.push(p));
-            this.offset += this.limit;
-            this.load_more = (conversations.length === this.limit);
+            this.setPageCount();
+
+            this.conversations = conversations;
+
             this.loading = false;
-            this.onSearch();
+
           }
         }
       );
     }
   }
 
-  onSearch(): void {
-    if (this.search_term) {
-      const s = this.search_term.toLowerCase();
-      this.visible_conversations = this.conversations.filter((p) => {
-        return p.title.toLowerCase().includes(s);
-      });
-    } else {
-      this.visible_conversations = this.conversations;
-    }
 
-  }
+  setPageCount(): void {
+    this.page_urls = [];
+    const page_count = Math.ceil(this.conversationsService.total_conversation_count / this.limit);
+    for (let i = 0; i < page_count; i++) {
+      this.page_urls.push({ page: (i + 1), path: ['/page', `${(i + 1)}`] });
 
-  loadMore(): void {
-    this.load_more = false;
-    this.getConversations();
-  }
-
-
-
-
-
-  deleteConversation(conversation: Conversation): void {
-    if (conversation.deleted !== 0) {
-      conversation.deleted = 1;
-      this.update_conversation_sub = this.conversationsService.updateConversation(conversation).subscribe(
-        () => this.refreshConversations(),
-        (error) => console.log(error)
-      );
     }
   }
+
+
+
+
+
+
 
   ngOnDestroy() {
     const subs: Subscription[] = [

@@ -128,3 +128,38 @@ $spinner_height: 35px;
 
     }
 }
+
+
+.pagination {
+    li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+
+        &.selected {
+
+            a,
+            a:hover {
+                background-color: $brand_color;
+                color: white;
+            }
+
+        }
+
+
+        a {
+            cursor: pointer;
+            display: inline-block;
+            padding: 10px;
+            background-color: $light_grey;
+            margin: 0 2px 2px;
+
+            border-radius: $border-radius;
+
+
+            &:hover {
+                background-color: darken($light_grey, 10);
+            }
+        }
+    }
+}

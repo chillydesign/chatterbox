@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { throwError, BehaviorSubject, Observable, } from 'rxjs';
 import { User } from '../models/user.model';
@@ -12,7 +12,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class AuthService {
   public current_user: BehaviorSubject<User | null> = new BehaviorSubject(null);
-  private api_url = environment.api_url;
+  private readonly api_url = environment.api_url;
   private token?: string;
   public logged_in = false;
 
@@ -26,11 +26,21 @@ export class AuthService {
       headers: new HttpHeaders({
         Accept: 'application/json;',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.token}`
-
+        'Authorization': `Bearer ${this.token}`,
       })
     };
     return httpOptions;
+  }
+
+
+  setAPIHeaders() {
+    const headers = new HttpHeaders({
+      Accept: 'application/json;',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`,
+    })
+
+    return headers;
   }
 
 

@@ -7,24 +7,35 @@ import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 
 
+export interface ConversationIndexResponse {
+  conversations: Conversation[];
+  total_count: number;
+}
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class ConversationsService {
   private api_url = environment.api_url;
+  public total_conversation_count = 0;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
 
+
+
   getConversations(opts = { limit: 10, offset: 0 }): Observable<Conversation[]> {
-
-
     const options = this.authService.setAPIOptions();
     const endpoint = `${this.api_url}/?route=conversations&offset=${opts.offset}&limit=${opts.limit}`;
-
-    return this.http.get<Conversation[]>(endpoint, options).pipe(
+    return this.http.get<ConversationIndexResponse>(endpoint, options).pipe(
       catchError(this.authService.handleError),
-      map(res => res.map((p: Conversation) => new Conversation(p)))
+      tap((res) => {
+        this.total_conversation_count = res.total_count;
+      }),
+      map(res => res.conversations.map((p: Conversation) => new Conversation(p))),
+
     );
 
   }

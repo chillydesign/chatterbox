@@ -1,4 +1,6 @@
-<table *ngIf="current_user">
+<app-spinner [show]="loading"></app-spinner>
+
+<table *ngIf="!loading">
     <thead>
         <tr>
             <th>Thread</th>
@@ -7,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let conversation of visible_conversations">
+        <tr *ngFor="let conversation of conversations">
             <td>
                 <a [routerLink]="['/conversations', conversation.id]">{{conversation.title}}</a></td>
             <td>{{conversation.created_at | date:'h:mm MMMM d, y'}}</td>
@@ -19,8 +21,8 @@
 
 
 
-<p *ngIf="load_more">
-    <a (click)="loadMore()" class="button button_block">Load more conversations</a>
-</p>
-
-<app-spinner [show]="loading"></app-spinner>
+<ul class="pagination">
+    <li>Page</li>
+    <li *ngFor="let url of page_urls" [ngClass]="{selected: url.page === current_page }"><a
+            [routerLink]="url.path">{{url.page}}</a></li>
+</ul>
