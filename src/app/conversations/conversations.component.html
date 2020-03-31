@@ -4,16 +4,21 @@
     <thead>
         <tr>
             <th>Thread</th>
-            <th>Posted:</th>
-            <th>Author</th>
+            <th>Latest reply:</th>
+            <th> # Messages</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let conversation of conversations">
             <td>
-                <a [routerLink]="['/conversations', conversation.id]">{{conversation.title}}</a></td>
-            <td>{{conversation.created_at | date:'h:mm MMMM d, y'}}</td>
-            <td>{{conversation.user.username}}</td>
+                <a [routerLink]="['/conversations', conversation.id]">{{conversation.title}} <br>
+                    <span class="meta"> {{conversation.user.username}} on
+                        {{conversation.created_at | date:' MMMM d'}}</span>
+                </a>
+            </td>
+            <td>{{conversation.updated_at | date:'h:mm MMMM d, y'}}</td>
+
+            <td>{{conversation.messages_count}}</td>
         </tr>
     </tbody>
 </table>

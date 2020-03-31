@@ -6,11 +6,7 @@
     margin: 0 0 $padding;
     border-bottom: 1px solid $light_grey;
 
-    @media(min-width: $mobile_width) {
-
-        padding-left: $padding;
-        padding-right: $padding;
-    }
+    @media(min-width: $mobile_width) {}
 
 
 }
