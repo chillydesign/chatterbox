@@ -57,6 +57,7 @@ export class NewMessageComponent implements OnInit, OnDestroy {
           }
           this.conversation.messages.push(newmessage);
           this.message = new Message();
+          this.file = null;
 
         },
         (error) => {
