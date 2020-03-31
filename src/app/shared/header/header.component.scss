@@ -4,19 +4,35 @@ header {
     background-color: $brand_color;
     margin: 0 0 $padding;
 
+
+
+
 }
 
 nav {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+
     font-size: $font_size;
+
+
+    @media(min-width: $mobile_width) {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+    }
 
 
     a {
         display: inline-block;
         color: white;
-        padding: $padding 10px;
+        padding: 15px 10px;
+
+
+
+        @media(min-width: $mobile_width) {
+            padding: $padding 10px;
+
+        }
 
         &:hover {
             background-color: $brand_color_adjust;
@@ -24,12 +40,6 @@ nav {
     }
 
 
-    h1 {
-        font-weight: bold;
-        letter-spacing: 1px;
-
-        text-transform: uppercase;
-    }
 
 
 
@@ -40,12 +50,31 @@ nav {
         color: white;
         padding: 0;
         margin: 0;
+        text-align: center;
 
     }
 
-    ul {
-        text-align: right;
+    h1 {
+        font-weight: bold;
+        letter-spacing: 1px;
 
+        text-transform: uppercase;
+
+        @media(min-width: $mobile_width) {
+
+            text-align: left;
+        }
+
+    }
+
+
+    ul {
+
+
+        @media(min-width: $mobile_width) {
+
+            text-align: right;
+        }
 
         li {
             font-size: 1em;

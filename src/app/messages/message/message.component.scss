@@ -2,9 +2,17 @@
 
 
 .message_container {
-    padding: 0 $padding $padding;
+    padding: 0 0 $padding;
     margin: 0 0 $padding;
     border-bottom: 1px solid $light_grey;
+
+    @media(min-width: $mobile_width) {
+
+        padding-left: $padding;
+        padding-right: $padding;
+    }
+
+
 }
 
 blockquote {
