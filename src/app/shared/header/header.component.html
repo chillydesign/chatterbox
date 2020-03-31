@@ -8,9 +8,9 @@
 
                 <li *ngIf="current_user.is_an_admin"><a [routerLink]="['/users']"> Users</a></li>
 
-                <li> <a [routerLink]="['/profile']"> {{current_user.username}}</a></li>
-                <li> <a [routerLink]="['/conversations', 'new']"> New thread</a></li>
-                <li><a class="logout" (click)="logout()" href="#">Log out</a></li>
+                <li> <a [routerLink]="['/']">Conversations</a></li>
+                <li> <a [routerLink]="['/conversations', 'new']"> New conversation</a></li>
+                <li><a class="logout" (click)="logout()" href="#">Logout</a></li>
 
 
             </ul>
