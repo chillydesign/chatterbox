@@ -29,4 +29,23 @@ export class UsersService {
     );
 
   }
+
+  updateUserApproval(user: User): Observable<User> {
+    const options = this.authService.setAPIOptions();
+    const endpoint = `${this.api_url}/?route=users&id=${user.id}&setapproval=1`;
+    const data = {
+      attributes: {
+        is_approved: user.is_approved,
+      }
+    };
+    return this.http.patch<User>(endpoint, data, options).pipe(
+      catchError(this.authService.handleError),
+      map(res => new User(res))
+    );
+  }
+
+
+
+
+
 }

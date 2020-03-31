@@ -56,6 +56,16 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   }
 
+  toggleApproval(user: User): void {
+    user.is_approved = !user.is_approved;
+    this.usersService.updateUserApproval(user).subscribe(
+      (updated_user: User) => {
+        user.is_approved = updated_user.is_approved;
+      },
+      (error) => console.log(error)
+    );
+  }
+
 
 
   ngOnDestroy() {

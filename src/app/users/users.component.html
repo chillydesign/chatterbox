@@ -19,7 +19,7 @@
                     </a></td>
                 <td>{{user.email}}</td>
                 <td>{{user.created_at | date:'MMMM d, y'}}</td>
-                <td>{{user.is_approved}}</td>
+                <td> <a (click)="toggleApproval(user)">{{user.is_approved}}</a></td>
 
 
             </tr>
