@@ -21,7 +21,7 @@
                     <label for="file">Upload a picture (max 1mb)</label>
                     <ngx-dropzone [accept]="'image/*'" [multiple]="false" [maxFileSize]="maxFileSize"
                         (change)="onSelect($event)">
-                        <ngx-dropzone-label>Drag file here or click here to upload </ngx-dropzone-label>
+                        <ngx-dropzone-label>Drag picture here or click here to upload </ngx-dropzone-label>
                         <ngx-dropzone-preview *ngIf="file" [removable]="true" (removed)="onRemove(file)">
                             <ngx-dropzone-label>{{ file.name }} ({{ file.type }}) <br> Loading ... </ngx-dropzone-label>
                         </ngx-dropzone-preview>

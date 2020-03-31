@@ -1,17 +1,30 @@
 <div class="message_container">
 
-    <div class="image_container" *ngIf="message && message.file_url">
-        <a [href]="message.file_url" target="_blank">
-            <img [src]="message.file_url" alt="" />
-        </a>
+
+    <div class="columns">
+        <div class="column">
+
+
+            <blockquote [innerHTML]="message.content | fancify"></blockquote>
+            <cite class="meta"><a [routerLink]="['/users', message.user.id]"> {{message.user.username}}</a> at
+
+                {{message.created_at | date:'h:mm MMMM d, y'}}
+
+                <span *ngIf="current_user.is_an_admin"> | <a (click)="deleteMessage()"> (delete message)</a> </span>
+
+            </cite>
+
+        </div>
+        <div class="column column_small" *ngIf="message && message.file_url">
+            <div class="image_container">
+                <a [href]="message.file_url" target="_blank">
+                    <img [src]="message.file_url" alt="" />
+                </a>
+            </div>
+
+        </div>
     </div>
 
-    <blockquote [innerHTML]="message.content | fancify"></blockquote>
-    <cite class="meta"><a [routerLink]="['/users', message.user.id]"> {{message.user.username}}</a> at
 
-        {{message.created_at | date:'h:mm MMMM d, y'}}
 
-        <span *ngIf="current_user.is_an_admin"> | <a (click)="deleteMessage()"> (delete message)</a> </span>
-
-    </cite>
 </div>
