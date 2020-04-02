@@ -5,6 +5,7 @@ import { Conversation } from '../models/conversation.model';
 import { Params, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/user.model';
+import { PaginationOptions } from '../models/pagination_options.model';
 
 @Component({
   selector: 'app-conversations',
@@ -15,10 +16,12 @@ export class ConversationsComponent implements OnInit, OnDestroy {
   public current_user: User;
   public conversations: Conversation[];
   public visible_conversations: Conversation[];
-  public limit = 20;
-  public page_urls: { path: string[], page: number }[];
-  public current_page = 1;
-  public load_more = false;
+  public pagination_options: PaginationOptions = {
+    posts_per_page: 20,
+    total_count: 0,
+    current_page: 1,
+    base_url: ['/page']
+  }
   public loading = false;
   public search_term: string;
   private conversations_sub: Subscription;
@@ -58,9 +61,9 @@ export class ConversationsComponent implements OnInit, OnDestroy {
       (params: Params) => {
 
         if (params.page) {
-          this.current_page = parseInt(params.page, 10);
+          this.pagination_options.current_page = parseInt(params.page, 10);
         } else {
-          this.current_page = 1;
+          this.pagination_options.current_page = 1;
         }
         this.getConversations();
       }
@@ -73,7 +76,10 @@ export class ConversationsComponent implements OnInit, OnDestroy {
 
     if (this.loading === false) {
       this.loading = true;
-      const options = { offset: this.limit * (this.current_page - 1), limit: this.limit };
+      const options = {
+        offset: this.pagination_options.posts_per_page * (this.pagination_options.current_page - 1),
+        limit: this.pagination_options.posts_per_page
+      };
       this.conversations_sub = this.conversationsService.getConversations(options).subscribe(
         (conversations: Conversation[]) => {
           if (conversations) {
@@ -91,12 +97,9 @@ export class ConversationsComponent implements OnInit, OnDestroy {
 
 
   setPageCount(): void {
-    this.page_urls = [];
-    const page_count = Math.ceil(this.conversationsService.total_conversation_count / this.limit);
-    for (let i = 0; i < page_count; i++) {
-      this.page_urls.push({ page: (i + 1), path: ['/page', `${(i + 1)}`] });
-
-    }
+    this.pagination_options.total_count = Math.ceil(
+      this.conversationsService.total_conversation_count / this.pagination_options.posts_per_page
+    );
   }
 
 

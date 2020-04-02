@@ -5,12 +5,7 @@ import { Observable } from 'rxjs';
 import { Conversation } from '../models/conversation.model';
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
-
-
-export interface ConversationIndexResponse {
-  conversations: Conversation[];
-  total_count: number;
-}
+import { ConversationIndexResponse } from '../models/conversation_index_response.model';
 
 
 

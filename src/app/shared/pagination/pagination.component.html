@@ -1,0 +1,15 @@
+<ul class="pagination" *ngIf=" options.total_count > 1">
+    <li>Page</li>
+    <li *ngFor="let url of page_urls" [ngClass]="{selected: url.page === options.current_page }">
+        <a *ngIf="!url.gap" [routerLink]="url.path">{{url.page}}</a>
+        <span *ngIf="url.gap">...</span>
+    </li>
+    <!-- <li *ngIf="middle_urls">...</li>
+    <li *ngFor="let url of middle_urls" [ngClass]="{selected: url.page === options.current_page }">
+        <a [routerLink]="url.path">{{url.page}}</a>
+    </li>
+    <li *ngIf="middle_urls">...</li>
+    <li *ngFor="let url of end_urls" [ngClass]="{selected: url.page === options.current_page }">
+        <a [routerLink]="url.path">{{url.page}}</a>
+    </li> -->
+</ul>

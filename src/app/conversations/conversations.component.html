@@ -25,10 +25,6 @@
             </tbody>
         </table>
 
-        <ul class="pagination">
-            <li>Page</li>
-            <li *ngFor="let url of page_urls" [ngClass]="{selected: url.page === current_page }"><a
-                    [routerLink]="url.path">{{url.page}}</a></li>
-        </ul>
+        <app-pagination [options]="pagination_options"></app-pagination>
     </div>
 </div>
