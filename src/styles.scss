@@ -189,19 +189,19 @@ $icon_height: 20px;
 
 
     &.icon_delete {
-        background-image: url('/assets/delete.svg');
+        background-image: url('./assets/delete.svg');
         background-color: white;
         background-size: #{$icon_height * 0.9};
 
     }
 
     &.icon_tick {
-        background-image: url('/assets/tick.svg');
+        background-image: url('./assets/tick.svg');
         background-color: $green;
     }
 
     &.icon_cross {
-        background-image: url('/assets/cross.svg');
+        background-image: url('./assets/cross.svg');
         background-color: $red;
     }
 }
