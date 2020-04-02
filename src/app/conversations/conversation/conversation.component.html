@@ -8,7 +8,9 @@
     <p class="meta">
         {{conversation.created_at | date}} by {{conversation.user.username}}
 
-        <span *ngIf="current_user.is_an_admin"> <a (click)=" deleteConversation()">(delete conversation)</a></span>
+        <span *ngIf="current_user.is_an_admin">
+            <a (click)="deleteConversation()" class="delete"> | delete conversation </a>
+        </span>
     </p>
 
     <app-message *ngFor="let message of conversation.messages" (messageDeleted)="removeMessage($event)"

@@ -5,7 +5,7 @@ $brand_color_dark: scale-color($brand_color, $lightness: -20%, $saturation: -50%
 
 $very_light_grey: #f7f7f7;
 $light_grey: #ddd;
-$medium_grey: #999;
+$medium_grey: #888;
 $dark_grey: #444;
 $font_color: #111;
 
@@ -13,7 +13,7 @@ $red: #ca385e;
 $green: #38ca5e;
 
 
-$background_color: #fff;
+$background_color: scale-color($brand_color, $lightness: 96%, $saturation: -20%);
 
 $font_stack: 'Work Sans',
 -apple-system,
@@ -34,5 +34,14 @@ $line_height: 150%;
 $padding: 24px;
 
 $border_radius: 4px;
+$box_shadow: 0 15px 20px transparentize($dark_grey, 0.96),
+0 2px 5px transparentize($dark_grey, 0.92);
 
 $mobile_width: 768px;
+
+
+@mixin linear-gradient($direction, $color-stops...) {
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+}

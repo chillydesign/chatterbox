@@ -1,30 +1,35 @@
 <div *ngIf="current_user && users">
+    <div class="box" *ngIf="current_user">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Created</th>
+                    <th>Approved</th>
 
-    <table *ngIf="current_user">
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Email</th>
-                <th>Created</th>
-                <th>Approved</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users">
-                <td>
-                    <a [routerLink]="['/users', user.id]">
-                        {{user.username}}
-                        <span *ngIf="user.is_an_admin"> (ADMIN)</span>
-                    </a></td>
-                <td>{{user.email}}</td>
-                <td>{{user.created_at | date:'MMMM d, y'}}</td>
-                <td> <a (click)="toggleApproval(user)">{{user.is_approved}}</a></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>
+                        <a [routerLink]="['/users', user.id]">
+                            {{user.username}}
+                            <span *ngIf="user.is_an_admin"> (ADMIN)</span>
+                        </a></td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.created_at | date:'MMMM d, y'}}</td>
+                    <td>
+                        <a (click)="toggleApproval(user)">
+                            <div *ngIf="user.is_approved" class="icon icon_tick" title="Approved">Approved</div>
+                            <div *ngIf="!user.is_approved" class="icon icon_cross" title="Unapproved">Unapproved</div>
+                        </a>
+                    </td>
 
 
-            </tr>
-        </tbody>
-    </table>
-
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>

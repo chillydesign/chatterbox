@@ -1,15 +1,17 @@
-<form *ngIf="conversation" (keyup)="onFormChange()" (change)="onFormChange()" (ngSubmit)="onSubmit()" novalidate>
-    <ul>
+<div class="box" *ngIf="conversation">
+    <form (keyup)="onFormChange()" (change)="onFormChange()" (ngSubmit)="onSubmit()" novalidate>
+        <ul>
 
-        <app-form-field [errors]="errors" [field]="'title'">
-            <label for="name">Title * </label>
-            <input autocomplete="off" type="text" name="title" id="title" placeholder="title"
-                [(ngModel)]="conversation.title" />
-        </app-form-field>
+            <app-form-field [errors]="errors" [field]="'title'">
+                <label for="name">Title * </label>
+                <input autocomplete="off" type="text" name="title" id="title" placeholder="title"
+                    [(ngModel)]="conversation.title" />
+            </app-form-field>
 
 
-        <app-form-field [errors]="errors">
-            <button [disabled]="formLoading">Create conversation</button>
-        </app-form-field>
-    </ul>
-</form>
+            <app-form-field [errors]="errors">
+                <button [disabled]="formLoading">Create conversation</button>
+            </app-form-field>
+        </ul>
+    </form>
+</div>

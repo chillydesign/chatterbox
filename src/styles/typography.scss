@@ -1,8 +1,13 @@
 h1 {
     font-size: #{$font_size * 2.3};
-    padding: 0 0 40px;
+    padding: 0 0 $padding;
 }
 
+
+h2 {
+    font-size: #{$font_size * 1.5};
+    padding: 0 0 5px;
+}
 
 p,
 li,
@@ -21,7 +26,7 @@ table {
 
 
     th {
-        background-color: $brand_color_dark;
+        background-color: $brand_color;
         color: white;
     }
 
@@ -60,6 +65,11 @@ a {
         transform: translateY(1px);
     }
 
+
+    &.danger,
+    &.delete {
+        color: $red;
+    }
 
     &:hover {
         color: $brand_color_dark;

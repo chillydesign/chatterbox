@@ -1,7 +1,8 @@
 @import '../../../styles/variables';
 
 header {
-    background-color: $brand_color;
+    // background-color: $brand_color;
+    background: linear-gradient(-90deg, $brand_color 0, $brand_color_adjust 100%);
     margin: 0 0 $padding;
 
 

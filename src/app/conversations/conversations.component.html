@@ -1,6 +1,31 @@
 <div *ngIf="current_user">
     <app-spinner [show]="loading"></app-spinner>
     <div *ngIf="!loading">
+
+
+        <div class="box" *ngFor="let conversation of conversations">
+
+            <h2> <a [routerLink]="['/conversations', conversation.id]">{{conversation.title}} </a></h2>
+            <div class="columns">
+                <div class="column">
+                    <p class="meta">
+                        <strong> {{conversation.user.username}} </strong> on {{conversation.created_at | date:'MMMM d'}}
+                        | {{conversation.messages_count}} messages
+
+                    </p>
+                </div>
+                <div class="column column_right">
+                    <p class="meta">Latest reply: {{conversation.updated_at | date:'H:mm, MMMM d'}} </p>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        <!--         
         <table *ngIf="!loading">
             <thead>
                 <tr>
@@ -19,11 +44,11 @@
                                 {{conversation.created_at | date:'MMMM d'}}</span>
                         </a>
                     </td>
-                    <td>{{conversation.updated_at | date:'h:mm, MMMM d'}}</td>
+                    <td>{{conversation.updated_at | date:'H:mm, MMMM d'}}</td>
                     <td>{{conversation.messages_count}}</td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
 
         <app-pagination [options]="pagination_options"></app-pagination>
     </div>

@@ -169,3 +169,75 @@ $spinner_height: 35px;
         }
     }
 }
+
+
+
+$icon_height: 20px;
+
+.icon {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    z-index: 1000;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: #{$icon_height * 0.5};
+    border-radius: 20px;
+    height: $icon_height;
+    width: $icon_height;
+    text-indent: -999999px;
+
+
+    &.icon_delete {
+        background-image: url('/assets/delete.svg');
+        background-color: white;
+        background-size: #{$icon_height * 0.9};
+
+    }
+
+    &.icon_tick {
+        background-image: url('/assets/tick.svg');
+        background-color: $green;
+    }
+
+    &.icon_cross {
+        background-image: url('/assets/cross.svg');
+        background-color: $red;
+    }
+}
+
+
+
+.box {
+    padding: $padding;
+    margin: 0 0 $padding;
+    background-color: white;
+    box-shadow: $box_shadow;
+    border-radius: $border_radius;
+
+    table {
+        margin-bottom: 0;
+    }
+
+    @media(min-width: $mobile_width) {}
+}
+
+
+
+
+blockquote {
+    font-size: $font_size;
+    margin: 0 0 10px;
+    line-height: 160%;
+}
+
+cite {
+    font-size: $font_size;
+
+}
+
+img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+}
