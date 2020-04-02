@@ -26,23 +26,11 @@ export class AuthService {
       headers: new HttpHeaders({
         Accept: 'application/json;',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.token}`,
+        Authorization: `Bearer ${this.token}`,
       })
     };
     return httpOptions;
   }
-
-
-  setAPIHeaders() {
-    const headers = new HttpHeaders({
-      Accept: 'application/json;',
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`,
-    })
-
-    return headers;
-  }
-
 
 
 
@@ -50,7 +38,7 @@ export class AuthService {
   // from an email and password get a token to use with the server
   login(email: string, password: string): Observable<boolean> {
     const options = this.setAPIOptions();
-    const data = { attributes: { email: email, password: password } };
+    const data = { attributes: { email, password } };
     const endpoint = `${this.api_url}/?route=user_tokens`;
     return this.http.post<{ jwt: string }>(endpoint, JSON.stringify(data), options).pipe(
       map(
@@ -74,14 +62,7 @@ export class AuthService {
   register(email: string, username: string, password: string, password_confirmation: string): Observable<User> {
     const options = this.setAPIOptions();
     const data = {
-
-      attributes: {
-        email: email,
-        username: username,
-        password: password,
-        password_confirmation: password_confirmation,
-      }
-
+      attributes: { email, username, password, password_confirmation }
     };
     const endpoint = `${this.api_url}/?route=users`;
     return this.http.post<User>(endpoint, data, options).pipe(
@@ -144,7 +125,7 @@ export class AuthService {
     this.removeCookie(environment.cookie_name);
     this.current_user.next(null);
     this.logged_in = false;
-    // go back to the homepage
+    // go back to the login page
     this.router.navigate(['/']);
   }
 

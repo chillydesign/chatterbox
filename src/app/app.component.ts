@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = environment.site_name;
+  public title = environment.site_name;
   constructor(
     private router: Router,
     private titleService: Title,

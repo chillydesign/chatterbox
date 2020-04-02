@@ -3,7 +3,7 @@ import { User } from '../models/user.model';
 import { Subscription } from 'rxjs';
 import { UsersService } from '../services/users.service';
 import { AuthService } from '../services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -18,7 +18,8 @@ export class UsersComponent implements OnInit, OnDestroy {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
 
@@ -31,9 +32,8 @@ export class UsersComponent implements OnInit, OnDestroy {
   getCurrentUser(): void {
     this.current_user_subscription = this.authService.current_user.subscribe(
       (user: User) => {
-        // set user to nil if necessary
-        this.current_user = user;
-        if (this.current_user) {
+        if (user) {
+          this.current_user = user;
           this.getUsers();
         }
 
