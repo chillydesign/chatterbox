@@ -78,7 +78,7 @@ export class NewMessageComponent implements OnInit, OnDestroy {
 
     if (event.rejectedFiles.length > 0) {
       if (event.rejectedFiles[0].reason === 'size') {
-        alert('This file is too big.')
+        alert('This file is too big.');
       }
     }
 

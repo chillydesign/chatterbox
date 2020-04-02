@@ -31,7 +31,7 @@ export class FancifyPipe implements PipeTransform {
 
 
     // add br tags for each new line char
-    const text_with_lines = text.replace(new RegExp('\n', 'g'), "<br />")
+    const text_with_lines = text.replace(new RegExp('\n', 'g'), '<br />');
     return text_with_lines;
 
   }

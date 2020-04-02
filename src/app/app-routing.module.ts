@@ -18,11 +18,25 @@ import { UnauthorizedComponent } from './status-codes/unauthorized/unauthorized.
 const routes: Routes = [
   { path: '', component: ConversationsComponent },
   { path: 'page/:page', component: ConversationsComponent, canActivate: [AuthGuardService] },
-  { path: 'conversations/new', component: NewConversationComponent, canActivate: [AuthGuardService], data: { title: 'New Conversation' } },
-  { path: 'conversations/:id/edit', component: EditConversationComponent, canActivate: [AuthGuardService], data: { title: 'Edit Conversation' } },
-  { path: 'conversations/:id', canActivate: [AuthGuardService], component: ConversationComponent },
-  { path: 'register', component: SignUpComponent },
-  { path: 'login', component: SignInComponent },
+  {
+    path: 'conversations/new',
+    component: NewConversationComponent,
+    canActivate: [AuthGuardService],
+    data: { title: 'New Conversation' }
+  },
+  {
+    path: 'conversations/:id/edit',
+    component: EditConversationComponent,
+    canActivate: [AuthGuardService],
+    data: { title: 'Edit Conversation' }
+  },
+  {
+    path: 'conversations/:id',
+    canActivate: [AuthGuardService],
+    component: ConversationComponent
+  },
+  { path: 'register', component: SignUpComponent, data: { title: 'Register' } },
+  { path: 'login', component: SignInComponent, data: { title: 'Login' } },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService], },
   { path: 'users/:id', component: UserComponent, canActivate: [AuthGuardService], },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuardService], data: { title: 'Users' } },

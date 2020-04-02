@@ -135,11 +135,9 @@ export class AuthService {
   updateUser(user: User): Observable<User> {
     const options = this.setAPIOptions();
     const data = {
-      data: {
-        attributes: {
-          first_name: user.username,
-          email: user.email
-        }
+      attributes: {
+        first_name: user.username,
+        email: user.email
       }
     };
     //  PATCH REQUEST TO SERVER WITH UPDATE USER DATA
@@ -157,13 +155,13 @@ export class AuthService {
   updateUserPassword(user: User): Observable<User> {
     const options = this.setAPIOptions();
     const data = {
-      data: {
-        attributes: {
-          password: user.password,
-          password_confirmation: user.password_confirmation,
-          current_password: user.current_password
-        }
+
+      attributes: {
+        password: user.password,
+        password_confirmation: user.password_confirmation,
+        current_password: user.current_password
       }
+
     };
     //  PATCH REQUEST TO SERVER WITH UPDATE ADMIN DATA
     const endpoint = `${this.api_url}/users/me/update_password`;
@@ -180,13 +178,7 @@ export class AuthService {
 
   resetPassword(email: string): Observable<boolean> {
     const options = this.setAPIOptions();
-    const data = {
-      data: {
-        attributes: {
-          email: email
-        }
-      }
-    };
+    const data = { attributes: { email } };
     const endpoint = `${this.api_url}/password/forgot`;
     return this.http.post(endpoint, data, options).pipe(
       map(() => true)
@@ -199,15 +191,7 @@ export class AuthService {
 
   set_new_password(password: string, password_confirmation: string, token: string): Observable<boolean> {
     const options = this.setAPIOptions();
-    const data = {
-      data: {
-        attributes: {
-          password: password,
-          password_confirmation: password_confirmation,
-          token: token
-        }
-      }
-    };
+    const data = { data: { attributes: { password, password_confirmation, token } } };
     const endpoint = `${this.api_url}/password/reset`;
     return this.http.post(endpoint, JSON.stringify(data), options).pipe(
       map(() => true)
