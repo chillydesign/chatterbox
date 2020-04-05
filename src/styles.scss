@@ -95,6 +95,51 @@ body {
 .meta {
     color: $medium_grey;
     font-style: italic;
+    padding: 0;
+}
+
+
+
+
+.alert {
+    padding: $padding;
+    background: $brand_color;
+    line-height: $line_height;
+    color: white;
+    border-radius: $border_radius;
+    box-shadow: $box_shadow;
+    margin: 0 0 $padding;
+    font-size: $font_size;
+    text-shadow: 0 2px 2px scale-color($brand_color, $lightness: -20%);
+
+    &.alert_success {
+        background-color: $green;
+        color: white; //scale-color($green, $lightness: 90%);
+        text-shadow: 0 2px 2px scale-color($green, $lightness: -20%);
+    }
+
+    &.alert_warning {
+        background-color: $red;
+        color: white; // scale-color($red, $lightness: 90%);
+        text-shadow: 0 2px 2px scale-color($red, $lightness: -20%);
+    }
+
+    &.alert_closable {
+        cursor: pointer;
+        position: relative;
+
+        &:after {
+            content: 'x';
+            width: 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 0 5px;
+            color: white;
+            opacity: 0.6;
+            font-weight: bold;
+        }
+    }
 }
 
 
@@ -206,6 +251,11 @@ $icon_height: 20px;
     }
 }
 
+
+.narrow {
+    max-width: 600px;
+    margin: 0 auto $padding;
+}
 
 
 .box {

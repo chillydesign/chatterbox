@@ -27,6 +27,7 @@ import { UserComponent } from './users/user/user.component';
 import { UsersComponent } from './users/users.component';
 import { UnauthorizedComponent } from './status-codes/unauthorized/unauthorized.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
+import { AlertComponent } from './shared/alert/alert.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
     UserComponent,
     UsersComponent,
     UnauthorizedComponent,
-    PaginationComponent
+    PaginationComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

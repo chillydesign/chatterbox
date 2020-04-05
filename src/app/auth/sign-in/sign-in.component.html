@@ -1,21 +1,25 @@
-<h1>Login </h1>
-<div class="box">
-    <form (ngSubmit)="onSubmit()" novalidate>
-        <ul>
-            <app-form-field>
-                <label for="email">Email</label>
-                <input autocomplete="email" type="email" id="email" name="email" placeholder="xxxxx@cpmdt.ch"
-                    [(ngModel)]="email" />
-            </app-form-field>
-            <app-form-field>
-                <label for="password">Password</label>
-                <input autocomplete="current-password" type="password" id="password" name="password"
-                    [(ngModel)]="password" />
-            </app-form-field>
-            <app-form-field [errors]="errors" [field]="'signin'">
-                <button>Log in</button>
-            </app-form-field>
-        </ul>
+<div class="narrow">
 
-    </form>
+    <h1>Login </h1>
+    <div class="box">
+        <form (ngSubmit)="onSubmit()" novalidate>
+            <ul>
+                <app-form-field>
+                    <label for="email">Email</label>
+                    <input autocomplete="email" type="email" id="email" name="email" placeholder="email"
+                        [(ngModel)]="email" />
+                </app-form-field>
+                <app-form-field>
+                    <label for="password">Password</label>
+                    <input autocomplete="current-password" type="password" id="password" placeholder="password"
+                        name="password" [(ngModel)]="password" />
+                </app-form-field>
+                <app-form-field [errors]="errors" [field]="'signin'">
+                    <button>Log in</button>
+                </app-form-field>
+            </ul>
+
+        </form>
+    </div>
+
 </div>

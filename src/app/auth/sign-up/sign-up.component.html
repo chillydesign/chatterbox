@@ -1,37 +1,39 @@
-<h1>Register</h1>
+<div class="narrow">
+    <h1>Register</h1>
 
-<div class="box">
+    <div class="box">
 
-    <form (keyup)="onFormChange()" (change)="onFormChange()" (ngSubmit)="onSubmit()" novalidate>
-        <ul>
+        <form (keyup)="onFormChange()" (change)="onFormChange()" (ngSubmit)="onSubmit()" novalidate>
+            <ul>
 
-            <app-form-field [errors]="errors" [field]="'email'">
-                <label for="email">Email * </label>
-                <input autocomplete="email" type="text" name="email" id="email" placeholder="email"
-                    [(ngModel)]="email" />
-            </app-form-field>
-            <app-form-field [errors]="errors" [field]="'username'">
-                <label for="username">Username * </label>
-                <input autocomplete="off" type="text" name="username" id="username" placeholder="username"
-                    [(ngModel)]="username" />
-            </app-form-field>
+                <app-form-field [errors]="errors" [field]="'email'">
+                    <label for="email">Email * </label>
+                    <input autocomplete="email" type="text" name="email" id="email" placeholder="email"
+                        [(ngModel)]="email" />
+                </app-form-field>
+                <app-form-field [errors]="errors" [field]="'username'">
+                    <label for="username">Username * </label>
+                    <input autocomplete="off" type="text" name="username" id="username" placeholder="username"
+                        [(ngModel)]="username" />
+                </app-form-field>
 
-            <app-form-field [errors]="errors" [field]="'password'">
-                <label for="password">Password * </label>
-                <input autocomplete="current-password" type="password" name="password" id="password"
-                    [(ngModel)]="password" />
-            </app-form-field>
+                <app-form-field [errors]="errors" [field]="'password'">
+                    <label for="password">Password * </label>
+                    <input autocomplete="current-password" type="password" name="password" id="password"
+                        [(ngModel)]="password" />
+                </app-form-field>
 
-            <app-form-field [errors]="errors" [field]="'password_confirmation'">
-                <label for="password_confirmation">Password confirmation* </label>
-                <input autocomplete="off" type="password" name="password_confirmation" id="password_confirmation"
-                    [(ngModel)]="password_confirmation" />
-            </app-form-field>
+                <app-form-field [errors]="errors" [field]="'password_confirmation'">
+                    <label for="password_confirmation">Password confirmation* </label>
+                    <input autocomplete="off" type="password" name="password_confirmation" id="password_confirmation"
+                        [(ngModel)]="password_confirmation" />
+                </app-form-field>
 
 
-            <app-form-field [errors]="errors">
-                <button [disabled]="formLoading">Register</button>
-            </app-form-field>
-        </ul>
-    </form>
+                <app-form-field [errors]="errors">
+                    <button [disabled]="formLoading">Register</button>
+                </app-form-field>
+            </ul>
+        </form>
+    </div>
 </div>

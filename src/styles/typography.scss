@@ -15,8 +15,13 @@ td,
 th {
     font-size: $font_size;
     letter-spacing: -0.1px;
+    line-height: $line_height;
 }
 
+
+p {
+    padding: 0 0 $padding;
+}
 
 
 

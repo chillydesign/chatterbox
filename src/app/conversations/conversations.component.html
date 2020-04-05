@@ -1,4 +1,8 @@
 <div *ngIf="current_user">
+
+    <app-alert [closable]="true"> Click on a conversation to read what's been said. Use the "add your message"
+        box at then end of the thread to join in. To start a new topic, click the New Conversations buttin at the
+        top of this page</app-alert>
     <app-spinner [show]="loading"></app-spinner>
     <div *ngIf="!loading">
 
@@ -19,37 +23,24 @@
                 </div>
             </div>
 
-
-
-
-
         </div>
 
-        <!--         
-        <table *ngIf="!loading">
-            <thead>
-                <tr>
-                    <th>Conversation</th>
-                    <th>Latest reply:</th>
-                    <th>#&nbsp;Messages</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let conversation of conversations">
-                    <td>
-                        <a [routerLink]="['/conversations', conversation.id]">
-                            <h4>{{conversation.title}}</h4>
-
-                            <span class="meta"> {{conversation.user.username}} on
-                                {{conversation.created_at | date:'MMMM d'}}</span>
-                        </a>
-                    </td>
-                    <td>{{conversation.updated_at | date:'H:mm, MMMM d'}}</td>
-                    <td>{{conversation.messages_count}}</td>
-                </tr>
-            </tbody>
-        </table> -->
-
         <app-pagination [options]="pagination_options"></app-pagination>
+    </div>
+</div>
+
+
+<div class=" narrow" *ngIf="!current_user">
+    <div class="box">
+        <p> Welcome to Chatterbox, an informal space to chat with friends and make new ones. If you’re already
+            registered
+            please<a [routerLink]="['/login']"> log in</a>. If you are new, please <a [routerLink]="['/register']">
+                register</a> and I will ‘admit’ you as soon as possible.</p>
+
+        <p>Chatterbox is a private site, set up and hosted by my son, Charles. The aim is to provide space to chat for
+            Bangor U3A members during the CV crisis. We will not be selling your details to the Russians, the Chinese or
+            anyone else. Once the need for the site is over we will remove all personal data. </p>
+        <p>Vicki Harvey</p>
+
     </div>
 </div>

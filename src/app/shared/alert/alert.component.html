@@ -1,0 +1,7 @@
+<div *ngIf="visible" class="alert" (click)="closeAlert()" [ngClass]="{
+    alert_closable:  closable,
+    alert_success:  success,
+    alert_warning: warning
+}">
+    <ng-content></ng-content>
+</div>
