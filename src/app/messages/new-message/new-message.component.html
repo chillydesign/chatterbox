@@ -24,7 +24,7 @@
                             (change)="onSelect($event)">
                             <ngx-dropzone-label>Drag picture here or click here to upload </ngx-dropzone-label>
                             <ngx-dropzone-preview *ngIf="file" [removable]="true" (removed)="onRemove(file)">
-                                <ngx-dropzone-label>{{ file.name }} ({{ file.type }}) <br> Loading ...
+                                <ngx-dropzone-label>{{ file.name }} ({{ file.type }})
                                 </ngx-dropzone-label>
                             </ngx-dropzone-preview>
                         </ngx-dropzone>
