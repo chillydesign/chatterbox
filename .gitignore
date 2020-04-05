@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-
+.htaccess
+chatterbox_api
 pushtoprod
 /_prod
 
