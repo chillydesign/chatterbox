@@ -1,7 +1,7 @@
 <div *ngIf="current_user">
 
     <app-alert [closable]="true"> Click on a conversation to read what's been said. Use the "add your message"
-        box at then end of the thread to join in. To start a new topic, click the New Conversations buttin at the
+        box at then end of the thread to join in. To start a new topic, click the New conversation button at the
         top of this page</app-alert>
     <app-spinner [show]="loading"></app-spinner>
     <div *ngIf="!loading">
