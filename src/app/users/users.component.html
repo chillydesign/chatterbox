@@ -1,5 +1,5 @@
 <div *ngIf="current_user && users">
-    <div class="box" *ngIf="current_user">
+    <div class="box">
         <table>
             <thead>
                 <tr>
@@ -30,6 +30,8 @@
                 </tr>
             </tbody>
         </table>
-    </div>
 
+
+    </div>
+    <app-pagination [options]="pagination_options"></app-pagination>
 </div>

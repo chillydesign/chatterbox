@@ -38,6 +38,7 @@ const routes: Routes = [
   { path: 'register', component: SignUpComponent, data: { title: 'Register' } },
   { path: 'login', component: SignInComponent, data: { title: 'Login' } },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService], },
+  { path: 'users/page/:page', component: UsersComponent, canActivate: [AuthGuardService], data: { title: 'Users' } },
   { path: 'users/:id', component: UserComponent, canActivate: [AuthGuardService], },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuardService], data: { title: 'Users' } },
 

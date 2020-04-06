@@ -15,7 +15,6 @@ import { PaginationOptions } from '../models/pagination_options.model';
 export class ConversationsComponent implements OnInit, OnDestroy {
   public current_user: User;
   public conversations: Conversation[];
-  public visible_conversations: Conversation[];
   public pagination_options: PaginationOptions = {
     posts_per_page: 20,
     total_count: 0,
@@ -23,7 +22,6 @@ export class ConversationsComponent implements OnInit, OnDestroy {
     base_url: ['/page']
   }
   public loading = false;
-  public search_term: string;
   private conversations_sub: Subscription;
   private route_params_subscription: Subscription;
   private current_user_subscription: Subscription;
@@ -84,9 +82,7 @@ export class ConversationsComponent implements OnInit, OnDestroy {
         (conversations: Conversation[]) => {
           if (conversations) {
             this.setPageCount();
-
             this.conversations = conversations;
-
             this.loading = false;
 
           }
