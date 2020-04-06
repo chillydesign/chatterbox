@@ -20,7 +20,7 @@ export class ConversationsComponent implements OnInit, OnDestroy {
     total_count: 0,
     current_page: 1,
     base_url: ['/page']
-  }
+  };
   public loading = false;
   private conversations_sub: Subscription;
   private route_params_subscription: Subscription;

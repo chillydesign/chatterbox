@@ -60,9 +60,7 @@ export class PaginationComponent implements OnInit {
         this.page_urls.push(gap);
       }
 
-
-
-    })
+    });
 
 
 

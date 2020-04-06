@@ -19,7 +19,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     total_count: 0,
     current_page: 1,
     base_url: ['/users', 'page']
-  }
+  };
   private current_user_subscription: Subscription;
   private route_params_subscription: Subscription;
   private users_sub: Subscription;
