@@ -273,6 +273,25 @@ $icon_height: 20px;
 }
 
 
+.table_container {
+
+    overflow-x: scroll;
+
+    @media(min-width: $mobile_width) {
+        overflow: auto;
+        width: 100%;
+    }
+
+    table {
+        width: 200%;
+
+        @media(min-width: $mobile_width) {
+            width: 100%;
+        }
+
+    }
+}
+
 
 
 blockquote {
@@ -286,8 +305,12 @@ cite {
 
 }
 
-img {
-    width: 100%;
-    height: auto;
-    max-width: 300px;
+.image_container {
+    img {
+        width: 100%;
+        height: auto;
+        max-width: 300px;
+        padding: 10px;
+        box-shadow: $box_shadow;
+    }
 }
