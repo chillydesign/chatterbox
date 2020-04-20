@@ -312,5 +312,11 @@ cite {
         max-width: 300px;
         padding: 10px;
         box-shadow: $box_shadow;
+        transition: all 0.3s;
+
+        &:hover {
+            transform: scale(1.025);
+        }
     }
+
 }

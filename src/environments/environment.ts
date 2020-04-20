@@ -11,7 +11,7 @@ export const environment = {
   cookie_length_hours: 50,
   cookie_name: 'token_local_chat',
   cache_duration: 60000, // time to hold resources from API in cache in milliseconds
-
+  upload_file_limit_bytes: 1024 * 1024 * 10, // 10 mb,
 };
 
 /*

@@ -4,6 +4,7 @@ import { MessagesService } from 'src/app/services/messages.service';
 import { Message } from 'src/app/models/message.model';
 import { Router } from '@angular/router';
 import { Conversation } from 'src/app/models/conversation.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-new-message',
@@ -19,17 +20,29 @@ export class NewMessageComponent implements OnInit, OnDestroy {
   public errors: Subject<object> = new Subject();
   private add_message_sub: Subscription;
   public file: File;
-  public maxFileSize: number = 1024 * 1024 * 1; // 1 mb
-
+  public maxFileSize: number = environment.upload_file_limit_bytes;
+  public niceMaxFileSize: string;
   constructor(private messagesService: MessagesService, private router: Router) { }
 
   ngOnInit() {
-
+    this.niceMaxFileSize = this.calcNiceMaxFileSize();
 
   }
 
 
 
+  calcNiceMaxFileSize(): string {
+    const bytes = this.maxFileSize;
+    if (bytes < 1024) {
+      return `${bytes} b`;
+    } else if (bytes < (1024 * 1024)) {
+      const kbs = Math.round(bytes / 1024);
+      return `${kbs} kb`;
+    } else {
+      const mbs = Math.round(bytes / 1024 / 1024);
+      return `${mbs} mb`;
+    }
+  }
 
   onFormChange(): void {
     // let server figure out if object is valid

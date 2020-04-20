@@ -18,7 +18,7 @@
         <a [routerLink]="['/users', message.user.id]"> {{message.user.username}}</a>
         at {{message.created_at | date:'H:mm MMMM d, y'}}
         <span *ngIf="current_user.is_an_admin">
-            <a (click)="deleteMessage()" class="delete"> | delete message</a>
+            | <a (click)="deleteMessage()" class="delete"> delete message</a>
         </span>
     </cite>
 

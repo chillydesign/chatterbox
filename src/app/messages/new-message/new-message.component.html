@@ -19,7 +19,7 @@
                 <ul>
 
                     <app-form-field>
-                        <label for="file">Upload a picture (max 1mb)</label>
+                        <label for="file">Upload a picture (max {{niceMaxFileSize}})</label>
                         <ngx-dropzone [accept]="'image/*'" [multiple]="false" [maxFileSize]="maxFileSize"
                             (change)="onSelect($event)">
                             <ngx-dropzone-label>Drag picture here or click here to upload </ngx-dropzone-label>

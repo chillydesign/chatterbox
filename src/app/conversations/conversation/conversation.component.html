@@ -9,7 +9,7 @@
         {{conversation.created_at | date}} by {{conversation.user.username}}
 
         <span *ngIf="current_user.is_an_admin">
-            <a (click)="deleteConversation()" class="delete"> | delete conversation </a>
+            | <a (click)="deleteConversation()" class="delete"> delete conversation </a>
         </span>
     </p>
 
